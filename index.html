@@ -158,6 +158,7 @@ function setVideo(){
 
         //Create callback after set
         if (document.getElementById("auto_refresh").checked == true){
+            clearTimeout(callback_timer);
             callback_timer = setTimeout(function(){ setVideo(); }, ending - nowish + 120000);
         }
         //<iframe width="560" height="315" src="https://www.youtube.com/embed/{vid}?start={start}&amp;autoplay=1" frameborder="0" allowfullscreen></iframe>
@@ -169,6 +170,7 @@ function setVideo(){
         parent.appendChild(div);
 
         if (document.getElementById("auto_refresh").checked == true){
+            clearTimeout(callback_timer);
             callback_timer = setTimeout(function(){ setVideo(); }, 10000);
         }
     }
