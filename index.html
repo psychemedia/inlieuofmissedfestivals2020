@@ -93,6 +93,7 @@ function getNow(){
         var asif_time = nowish.getHours()+':'+nowish.getMinutes();
         nowish = new Date((asif_date +' '+ asif_time).replace(/\s/, 'T'));
     }
+    console.log('getnow', nowish)
     return nowish;
 }
 
@@ -102,7 +103,7 @@ var days = [];
 
 var acts = [];
 
-var callback_timer;
+var callback_timer = [];
 
 
 function setVideo(){
@@ -111,7 +112,8 @@ function setVideo(){
     var nowish = Date.parse(getNow());
     var vid = '';
     var ts = 0;
-    var starting = null;
+    var starting;
+    var ending;
 
     var stage_el = document.getElementById("stageSelect");
     //var stage = stage_el.options[stage_el.selectedIndex].value;
@@ -120,14 +122,15 @@ function setVideo(){
 
     // find what's on by iterating till we find something
     for (var act of acts) {
-        console.log('nowish', act, (new Date(nowish)).toUTCString(), (new Date(act['starting'])).toUTCString())
-        //console.log('starting', (new Date(act['starting'])).toUTCString())
+        //console.log('nowish', act, nowish, (new Date(nowish)).toUTCString(), (new Date(act['starting'])).toUTCString())
+        console.log('noiwsh', nowish, 'starting', act['starting'], act['ending'],(new Date(act['starting'])).toUTCString())
         console.log(stage, act['stage'])
         if ((stage == act['stage']) && ('v' in act) && (nowish >= act['starting']) && (nowish <=act['ending'])) {
             console.log('HURRAH', act['starting'])
             vid = act['v'];
             if ('t' in act) ts = act['t'];
             starting = act['starting'];
+            ending = act['ending'];
             break;
         }
     }
@@ -153,6 +156,10 @@ function setVideo(){
         iframe.setAttribute('src', url);
         parent.appendChild(iframe);
 
+        //Create callback after set
+        if (document.getElementById("auto_refresh").checked == true){
+            callback_timer = setTimeout(function(){ setVideo(); }, ending - nowish + 120000);
+        }
         //<iframe width="560" height="315" src="https://www.youtube.com/embed/{vid}?start={start}&amp;autoplay=1" frameborder="0" allowfullscreen></iframe>
     } else {
         var div = document.createElement('div');
@@ -161,8 +168,9 @@ function setVideo(){
         div.innerHTML = '<h3>All quiet...</h3><div>Please come back to this stage later...</div>';
         parent.appendChild(div);
 
-        if (document.getElementById("auto_refresh").checked == true)
-            callback_time = setTimeout(function(){ setVideo(); }, 10000);
+        if (document.getElementById("auto_refresh").checked == true){
+            callback_timer = setTimeout(function(){ setVideo(); }, 10000);
+        }
     }
 
 }
@@ -230,7 +238,7 @@ function createRadio(parent_id, radio_id, radioName, vals){
         input.id = newId();
         input.name = radioName;
         input.value = vals[i];
-        input.onclick = function() {setVideo();};
+        input.onclick = function() {clearTimeout(callback_timer); setVideo();};
         if (i == 0) input.checked = true;
 
         var label = document.createElement("label");
