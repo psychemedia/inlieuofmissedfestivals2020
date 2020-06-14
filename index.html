@@ -108,23 +108,36 @@ act = {"start":"2020-07-10 15:30","end":"2020-07-10 16:10","stage":"Dean 2","act
 
     <style>
 
-.form-select {
-  appearance: none;
-  -webkit-appearance: none;
-  background-color: transparent;
+.formSelect {
+  height: 44px;
+  border: none;
+  overflow: hidden;
+}
+.formSelect::-moz-focus-inner {
   border: 0;
-  padding:10px;
-  margin:-5px -20px -5px -5px;
+}
+.formSelect:focus {
+  outline: none;
+}
+.formSelect option{
+  font-size: 1.2em;
+  padding: 10px 10px;
+  text-align: center;
+  margin-right: 20px;
+  display: inline-block;
+  cursor: pointer;
+
+  border-radius: 5px;
 }
 
-.form-select option {
-  display:inline-block;
+#stageSelect option{
+  border:rgb(185, 15, 150) solid 1px;
+  color: rgb(185, 15, 150);
 }
 
-.form-select {
-  display:inline-block;
-  vertical-align:top;
-  overflow:hidden;
+#daySelect option{
+  border:rgb(40, 15, 185) solid 1px;
+  color: rgb(40, 15, 185);
 }
 
 .noshow {
@@ -306,9 +319,9 @@ function createSelector(parent_id, selector_id, vals){
     var parent = document.getElementById(parent_id);
     //Create and append select list
     var selector = document.createElement("select");
+    selector.multiple = true;
     selector.id = selector_id;
-    selector.class = "form-select";
-    selector.size = "3";
+    selector.className = "formSelect";
 
     //Create and append the options
     for (var i = 0; i < vals.length; i++) {
@@ -336,6 +349,8 @@ createSelector('stageSelect_div', 'stageSelect', stages)
 document.addEventListener('DOMContentLoaded', function(event) {
     document.getElementById('daySelect_div').addEventListener("change", setVideo);
     document.getElementById('stageSelect_div').addEventListener("change", setVideo);
+    document.getElementById('daySelect_div').addEventListener("click", setVideo);
+    document.getElementById('stageSelect_div').addEventListener("click", setVideo);
     setVideo();
 })
 
