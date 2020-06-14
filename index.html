@@ -140,6 +140,10 @@ act = {"start":"2020-07-10 15:30","end":"2020-07-10 16:10","stage":"Dean 2","act
   color: rgb(40, 15, 185);
 }
 
+#daySelect_div, #actSelect_div, #asiftoday_div {
+    margin: 25px;
+}
+
 .noshow {
     border-style: solid;
     margin: 25px 50px 75px 100px;
@@ -254,9 +258,9 @@ console.log(el.getElementById( 'jq-input1' ).value);
     <div id='main'>
         <div id='daySelect_div'></div>
         <div id='stageSelect_div'></div>
-        <div>
+        <div id='asiftoday_div'>
             <input type="checkbox" id="asiftoday" name="today" checked>
-            <label for="asiftoday">As if today...</label>
+            <label for="asiftoday">View selected stage, on a selected day, as if it were today...</label>
         </div>
         <div id='festival_video'></div>
         <div id='merch'></div>
