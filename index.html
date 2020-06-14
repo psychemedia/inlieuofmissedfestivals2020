@@ -102,7 +102,12 @@ var days = [];
 
 var acts = [];
 
+var callback_timer;
+
+
 function setVideo(){
+    clearTimeout(callback_timer);
+
     var nowish = Date.parse(getNow());
     var vid = '';
     var ts = 0;
@@ -155,6 +160,9 @@ function setVideo(){
         div.setAttribute("class", "noshow");
         div.innerHTML = '<h3>All quiet...</h3><div>Please come back to this stage later...</div>';
         parent.appendChild(div);
+
+        if (document.getElementById("auto_refresh").checked == true)
+            callback_time = setTimeout(function(){ setVideo(); }, 10000);
     }
 
 }
@@ -195,7 +203,8 @@ console.log(el.getElementById( 'jq-input1' ).value);
         </div>
         <div id='festival_video'></div>
         <div id='merch'></div>
-        <div>Festival listing on Clashfinder: <a href="https://clashfinder.com/s/inlieuofmissedfestivals2020/">inlieuofmissedfestivals2020</a></div>
+        <div id='refresher'><input type="checkbox" id="auto_refresh" name="auto_refresh" checked onclick="setVideo()">
+            <label for="auto_refresh">Auto-refresh if session has ended.</div>
     </div>
     <script>
     
