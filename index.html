@@ -2,109 +2,6 @@
 
 <head>
     <title>In Lieu Of Missed Festivals, 2020</title>
-    <script>
-        var items = `
-        act = {"start":"2020-07-10 14:00","end":"2020-07-10 14:20","stage":"Folk Tales","act":"Eddie Lenihan","video":"https://www.youtube.com/watch?v=JQBwyhkRd1I&t=60s"}
-act = {"start":"2020-07-10 15:00","end":"2020-07-10 15:05","stage":"Folk Tales","act":"Trials of Cato","video":"https://www.youtube.com/watch?v=GSxPrV6U9eU"}
-act = {"start":"2020-07-10 16:00","end":"2020-07-10 16:05","stage":"Folk Tales","act":"Trials of Cato","video":"https://www.youtube.com/watch?v=kw3RrTbNHnA"}
-act = {"start":"2020-07-10 17:00","end":"2020-07-10 17:05","stage":"Folk Tales","act":"Trials of Cato","video":"https://www.youtube.com/watch?v=gBeKiopW3QY"}
-act = {"start":"2020-07-10 17:55","end":"2020-07-10 18:00","stage":"Folk Tales","act":"Trials of Cato","video":"https://www.youtube.com/watch?v=UyhjnGVdq5k"}
-act = {"start":"2020-07-10 23:15","end":"2020-07-11 00:00","stage":"Folk Tales","act":"Songhoy Blues","video":"https://www.youtube.com/watch?v=6oM3WD6aba0"}
-act = {"start":"2020-07-11 01:00","end":"2020-07-11 01:58","stage":"Folk Tales","act":"Georgie Fame","video":"https://www.youtube.com/watch?v=wzWPqB9uHEw"}
-act = {"start":"2020-07-11 03:00","end":"2020-07-11 03:55","stage":"Folk Tales","act":"Protect and Survive","type":"film","video":"https://www.youtube.com/watch?v=m6U9T3R3EQg"}
-act = {"start":"2020-07-11 03:55","end":"2020-07-11 04:55","stage":"Folk Tales","act":"Panorama - If The Bomb Drops","type":"film","video":"https://www.youtube.com/watch?v=milbW4RDIco"}
-act = {"start":"2020-07-11 05:00","end":"2020-07-11 06:00","stage":"Folk Tales","act":"Oliver Postage Documentary","type":"film","video":"https://www.youtube.com/watch?v=6UBXH_MuSwU"}
-act = {"start":"2020-07-11 10:00","end":"2020-07-11 11:00","stage":"Folk Tales","act":"James Bridle","type":"other","video":"https://www.youtube.com/watch?v=U87B4rgCeFs"}
-act = {"start":"2020-07-11 11:10","end":"2020-07-11 11:30","stage":"Folk Tales","act":"Grayson Perry","video":"https://www.youtube.com/watch?v=PI2JG67b-fs"}
-act = {"start":"2020-07-11 11:45","end":"2020-07-11 12:15","stage":"Folk Tales","act":"Fred Dibnah","type":"other","video":"https://www.youtube.com/watch?v=QTv1a_nACCs"}
-act = {"start":"2020-07-11 12:30","end":"2020-07-11 12:40","stage":"Folk Tales","act":"Uiscedwr","video":"https://www.youtube.com/watch?v=Ch28Vkzeuis"}
-act = {"start":"2020-07-11 13:35","end":"2020-07-11 13:45","stage":"Folk Tales","act":"Uiscedwr","video":"https://www.youtube.com/watch?v=6-o3oPoq_Ss"}
-act = {"start":"2020-07-11 14:25","end":"2020-07-11 14:35","stage":"Folk Tales","act":"Uiscedwr","video":"https://www.youtube.com/watch?v=66ryz8-khXg"}
-act = {"start":"2020-07-11 15:25","end":"2020-07-11 15:35","stage":"Folk Tales","act":"Uiscedwr","video":"https://www.youtube.com/watch?v=_bIQIgQRNWQ"}
-act = {"start":"2020-07-11 16:20","end":"2020-07-11 16:30","stage":"Folk Tales","act":"Uiscedwr","video":"https://www.youtube.com/watch?v=I1DgDIiQFm4"}
-act = {"start":"2020-07-11 17:15","end":"2020-07-11 17:25","stage":"Folk Tales","act":"Uiscedwr","video":"https://www.youtube.com/watch?v=NpgGRN6Wm3g"}
-act = {"start":"2020-07-11 18:20","end":"2020-07-11 18:30","stage":"Folk Tales","act":"Uiscedwr","video":"https://www.youtube.com/watch?v=j1h6_4mRSIU"}
-act = {"start":"2020-07-11 19:00","end":"2020-07-11 19:15","stage":"Folk Tales","act":"Bad Shepherds","video":"https://www.youtube.com/watch?v=u-2KCN8Bmb8"}
-act = {"start":"2020-07-11 19:30","end":"2020-07-11 19:50","stage":"Folk Tales","act":"Arlo Guthrie","video":"https://www.youtube.com/watch?v=-yLg_bzwvxg"}
-act = {"start":"2020-07-11 20:00","end":"2020-07-11 21:20","stage":"Folk Tales","act":"Stewart Lee","video":"https://www.youtube.com/watch?v=VxN8PhKzZgY"}
-act = {"start":"2020-07-11 21:35","end":"2020-07-11 22:40","stage":"Folk Tales","act":"Kate Tempest","video":"https://www.youtube.com/watch?v=3xu5HL1Xl64"}
-act = {"start":"2020-07-11 23:00","end":"2020-07-12 00:25","stage":"Folk Tales","act":"Neil Young","video":"https://www.youtube.com/watch?v=dwwlCeWCEtY"}
-act = {"start":"2020-07-12 01:00","end":"2020-07-12 01:40","stage":"Folk Tales","act":"Ghostdance","video":"https://www.youtube.com/watch?v=_krULWgZCDQ"}
-act = {"start":"2020-07-12 01:50","end":"2020-07-12 02:25","stage":"Folk Tales","act":"Bauhaus"}
-act = {"start":"2020-07-12 02:45","end":"2020-07-12 04:10","stage":"Folk Tales","act":"Nosferatu","type":"film","video":"https://www.youtube.com/watch?v=FC6jFoYm3xs"}
-act = {"start":"2020-07-12 04:15","end":"2020-07-12 06:00","stage":"Folk Tales","act":"HÄXAN ","type":"film","video":"https://www.youtube.com/watch?v=CkXlXc0lA9c"}
-act = {"start":"2020-07-12 11:00","end":"2020-07-12 11:15","stage":"Folk Tales","act":"Mark Knopfler","video":"https://www.youtube.com/watch?v=OG__SwkV3wg"}
-act = {"start":"2020-07-12 11:25","end":"2020-07-12 11:40","stage":"Folk Tales","act":"Woodland crafts","type":"film","video":"https://www.youtube.com/watch?v=CLkK7HCryHc"}
-act = {"start":"2020-07-12 11:50","end":"2020-07-12 11:55","stage":"Folk Tales","act":"Physics Magic","type":"film","video":"https://www.youtube.com/watch?v=IzQsYnLz2Gc"}
-act = {"start":"2020-07-12 15:00","end":"2020-07-12 15:30","stage":"Folk Tales","act":"Nick Hennessy","video":"https://www.youtube.com/watch?v=sedZvSu84Tw"}
-act = {"start":"2020-07-12 19:55","end":"2020-07-12 21:00","stage":"Folk Tales","act":"Nikolaz Cadoret"}
-act = {"start":"2020-07-12 22:40","end":"2020-07-13 00:00","stage":"Folk Tales","act":"Fishermens Friends","video":"https://www.youtube.com/watch?v=NgfbQj3Qtf8"}
-act = {"start":"2020-07-13 00:30","end":"2020-07-13 01:00","stage":"Folk Tales","act":"The Interrupters (acoustic)","video":"https://www.youtube.com/watch?v=Df-b--DKWC4"}
-
-act = {"start":"2020-07-10 17:15","end":"2020-07-10 17:35","stage":"Lost Cause","act":"The Clash","video":"https://www.youtube.com/watch?v=FRqZxvMtDZA"}
-act = {"start":"2020-07-10 18:10","end":"2020-07-10 18:55","stage":"Lost Cause","act":"Hands Off Gretel","video":"https://www.youtube.com/watch?v=9enqZ1mjv3E"}
-act = {"start":"2020-07-10 19:20","end":"2020-07-10 20:05","stage":"Lost Cause","act":"Loop","video":"https://www.youtube.com/watch?v=vyACiJImK-A"}
-act = {"start":"2020-07-10 20:20","end":"2020-07-10 21:00","stage":"Lost Cause","act":"Ferocious Dog","video":"https://www.youtube.com/watch?v=UQwFfcMRqt0"}
-act = {"start":"2020-07-10 21:25","end":"2020-07-10 22:10","stage":"Lost Cause","act":"Living Colour","video":"https://www.youtube.com/watch?v=uIbDWb0tls0"}
-act = {"start":"2020-07-10 22:35","end":"2020-07-10 23:20","stage":"Lost Cause","act":"The Pixies","video":"https://www.youtube.com/watch?v=rZwv_3mcgQk"}
-act = {"start":"2020-07-10 23:35","end":"2020-07-11 01:00","stage":"Lost Cause","act":"The Cranberries","video":"https://www.youtube.com/watch?v=uF0PrDdKogo"}
-act = {"start":"2020-07-11 02:00","end":"2020-07-11 04:40","stage":"Lost Cause","act":"Tangerine Dream","video":"https://www.youtube.com/watch?v=YrxZ3lo1jS4"}
-act = {"start":"2020-07-11 05:00","end":"2020-07-11 06:40","stage":"Lost Cause","act":"Ozric Tentacles","video":"https://www.youtube.com/watch?v=bQukgZXQU6g"}
-act = {"start":"2020-07-11 07:00","end":"2020-07-11 07:40","stage":"Lost Cause","act":"Adamski","video":"https://www.youtube.com/watch?v=bx0-XSfYsjI"}
-act = {"start":"2020-07-11 15:25","end":"2020-07-11 16:00","stage":"Lost Cause","act":"Dumpy's Rusty Nuts","video":"https://www.youtube.com/watch?v=N9eO4B-Tgsc"}
-act = {"start":"2020-07-11 16:20","end":"2020-07-11 16:50","stage":"Lost Cause","act":"Seasick Steve","video":"https://www.youtube.com/watch?v=D3IZPBQEVDs"}
-act = {"start":"2020-07-11 17:05","end":"2020-07-11 17:50","stage":"Lost Cause","act":"John Otway","video":"https://www.youtube.com/watch?v=lS20zN55II8"}
-act = {"start":"2020-07-11 18:05","end":"2020-07-11 18:50","stage":"Lost Cause","act":"Dawn After Dark","video":"https://www.youtube.com/watch?v=sCD2uSpqa9E"}
-act = {"start":"2020-07-11 19:05","end":"2020-07-11 19:30","stage":"Lost Cause","act":"Red Hot Chilli Peppers","video":"https://www.youtube.com/watch?v=t88vzDoETmk"}
-act = {"start":"2020-07-11 19:45","end":"2020-07-11 20:25","stage":"Lost Cause","act":"The Police","video":"https://www.youtube.com/watch?v=_MwKstla6w0"}
-act = {"start":"2020-07-11 20:45","end":"2020-07-11 21:05","stage":"Lost Cause","act":"Inspiral Carpets","video":"https://www.youtube.com/watch?v=6K_boRQ7NUo"}
-act = {"start":"2020-07-11 21:30","end":"2020-07-11 22:25","stage":"Lost Cause","act":"Blondie","video":"https://www.youtube.com/watch?v=X9hUfd_3MMU"}
-act = {"start":"2020-07-11 22:55","end":"2020-07-12 00:00","stage":"Lost Cause","act":"Faith No More","video":"https://www.youtube.com/watch?v=2ZoMqqz_tW0"}
-act = {"start":"2020-07-12 00:30","end":"2020-07-12 01:30","stage":"Lost Cause","act":"Pendulum","video":"https://www.youtube.com/watch?v=NnPm_S_aqt4"}
-act = {"start":"2020-07-12 01:40","end":"2020-07-12 02:50","stage":"Lost Cause","act":"Mark Shreeve","video":"https://www.youtube.com/watch?v=0-Fwr-hWc_I"}
-act = {"start":"2020-07-12 03:00","end":"2020-07-12 04:50","stage":"Lost Cause","act":"Kitaro","video":"https://www.youtube.com/watch?v=PATQqoolgRA"}
-act = {"start":"2020-07-12 05:00","end":"2020-07-12 06:00","stage":"Lost Cause","act":"Catrin Finch & Seckou Keita","video":"https://www.youtube.com/watch?v=XX8frzwtdUk"}
-act = {"start":"2020-07-12 13:00","end":"2020-07-12 14:50","stage":"Lost Cause","act":"The Pirates of Penzance","video":"https://www.youtube.com/watch?v=3KRbCTFqTlE"}
-act = {"start":"2020-07-12 17:45","end":"2020-07-12 18:15","stage":"Lost Cause","act":"The Byrds","video":"https://www.youtube.com/watch?v=PcTCi_lb_tA"}
-act = {"start":"2020-07-12 18:30","end":"2020-07-12 18:55","stage":"Lost Cause","act":"The Bolshoi","video":"https://www.youtube.com/watch?v=6flmNKIMcjQ"}
-act = {"start":"2020-07-12 19:10","end":"2020-07-12 19:35","stage":"Lost Cause","act":"Amy Macdonald","video":"https://www.youtube.com/watch?v=f9qAGSVOJQA"}
-act = {"start":"2020-07-12 19:45","end":"2020-07-12 20:45","stage":"Lost Cause","act":"Dr Feelgood","video":"https://www.youtube.com/watch?v=v-jtHFdo-mg"}
-act = {"start":"2020-07-12 21:00","end":"2020-07-12 22:00","stage":"Lost Cause","act":"Hawkwind","video":"https://www.youtube.com/watch?v=1rOHeVdp1MI"}
-act = {"start":"2020-07-12 22:15","end":"2020-07-13 00:00","stage":"Lost Cause","act":"Florence and the Machine","video":"https://www.youtube.com/watch?v=lJ-JVN9TSq0"}
-
-act = {"start":"2020-07-10 21:50","end":"2020-07-10 22:30","stage":"Spiral Dome","act":"David Bowie"}
-act = {"start":"2020-07-11 14:45","end":"2020-07-11 15:25","stage":"Spiral Dome","act":"Lilly Allen","video":"https://www.youtube.com/watch?v=A7p979l89yQ"}
-act = {"start":"2020-07-11 17:20","end":"2020-07-11 18:10","stage":"Spiral Dome","act":"Tunng","video":"https://www.youtube.com/watch?v=ubX79TowmG8"}
-act = {"start":"2020-07-11 19:05","end":"2020-07-11 20:50","stage":"Spiral Dome","act":"oysterband","video":"https://www.youtube.com/watch?v=72zykpqsSvA"}
-act = {"start":"2020-07-11 21:45","end":"2020-07-11 23:00","stage":"Spiral Dome","act":"the burning hell","video":"https://www.youtube.com/watch?v=oEVtr0Glpd0"}
-act = {"start":"2020-07-12 01:05","end":"2020-07-12 02:20","stage":"Spiral Dome","act":"hawkwind","video":"https://www.youtube.com/watch?v=44GKr7TPpuw"}
-act = {"start":"2020-07-12 15:10","end":"2020-07-12 15:50","stage":"Spiral Dome","act":"funny penguins","video":"https://www.bing.com/videos/search?q=penguin+videos&src=IE-SearchBox&ru=%2fsearch%3fq%3dpenguin%2bvideos%26src%3dIE-SearchBox%26FORM%3dIESR4A&view=detail&mmscn=vwrc&mid=51B366C6FE6F2CB5FAE951B366C6FE6F2CB5FAE9&FORM=WRVORC"}
-act = {"start":"2020-07-12 20:55","end":"2020-07-12 22:15","stage":"Spiral Dome","act":"Cyndi Lauper","video":"https://www.youtube.com/watch?v=5UvUpeg2Z4E"}
-act = {"start":"2020-07-12 22:55","end":"2020-07-12 23:15","stage":"Spiral Dome","act":"Opus 111","video":"https://www.youtube.com/watch?v=2pZ2YdzXgJI"}
-act = {"start":"2020-07-12 23:40","end":"2020-07-13 00:45","stage":"Spiral Dome","act":"Tank us the Henge","video":"https://www.youtube.com/watch?v=BZaOTK9qed0"}
-
-act = {"start":"2020-07-11 09:15","end":"2020-07-11 09:55","stage":"Sacred Space","act":"Tai chi with David","video":"https://www.youtube.com/watch?v=iM-cekkSDP8"}
-act = {"start":"2020-07-12 10:05","end":"2020-07-12 10:45","stage":"Sacred Space","act":"Hawaii spaces","video":"https://www.youtube.com/watch?v=zmrVMmBRMdE"}
-act = {"start":"2020-07-12 11:10","end":"2020-07-12 11:50","stage":"Sacred Space","act":"Hawaii sunrise","video":"https://www.youtube.com/watch?v=xDBMaAWtQHI"}
-act = {"start":"2020-07-12 12:05","end":"2020-07-12 12:45","stage":"Sacred Space","act":"Interview with shepheress","video":"https://www.youtube.com/watch?v=jyEylr9aygM"}
-act = {"start":"2020-07-12 13:10","end":"2020-07-12 13:50","stage":"Sacred Space","act":"Allucidnation","video":"https://www.youtube.com/watch?v=Rq-36xWPn-0"}
-act = {"start":"2020-07-12 14:30","end":"2020-07-12 15:10","stage":"Sacred Space","act":"This Mortal Coil","video":"https://www.youtube.com/watch?v=_Dvd6o0qqoY&list=PLlKKgwDIzfphGZ65ZdOI3CtQJFVI64_B9&index=7&t=0s"}
-act = {"start":"2020-07-12 16:00","end":"2020-07-12 16:45","stage":"Sacred Space","act":"Sinead O'connor","video":"https://www.youtube.com/watch?v=TdgHdasnEk8"}
-act = {"start":"2020-07-12 17:05","end":"2020-07-12 17:50","stage":"Sacred Space","act":"Hazel O'Connor","video":"https://www.youtube.com/watch?v=_ipkUpcNKps"}
-act = {"start":"2020-07-12 19:55","end":"2020-07-12 20:55","stage":"Sacred Space","act":"All about Eve","video":"https://www.youtube.com/watch?v=xlqn1rTHsxo"}
-
-act = {"start":"2020-07-10 15:30","end":"2020-07-10 16:10","stage":"Jess 1","act":"New Act"}
-
-act = {"start":"2020-07-10 15:30","end":"2020-07-10 16:10","stage":"Jess 2","act":"New Act"}
-
-act = {"start":"2020-07-10 15:30","end":"2020-07-10 16:10","stage":"Dean 1","act":"New Act"}
-
-act = {"start":"2020-07-10 15:30","end":"2020-07-10 16:10","stage":"Dean 2","act":"New Act"}
-
-
-
-`
-    </script>
 
     <style>
 
@@ -172,6 +69,11 @@ function getNow(){
     return nowish;
 }
 
+var stages = [];
+
+var days = [];
+
+var acts = [];
 
 function setVideo(){
     var nowish = Date.parse(getNow());
@@ -267,54 +169,7 @@ console.log(el.getElementById( 'jq-input1' ).value);
         <div>Festival listing on Clashfinder: <a href="https://clashfinder.com/s/inlieuofmissedfestivals2020/">inlieuofmissedfestivals2020</a></div>
     </div>
     <script>
-    var itemlist = items.split('\n');
-
-var stages = [];
-
-var days = [];
-
-var acts = [];
-
-for (var item of itemlist){
-    if (item.startsWith("act = ")) {
-        var item_str = item.replace("act = ", "");
-        var act = JSON.parse(item_str);
-        act['v'] = '';
-        act['t'] = 0;
-        if ('video' in act){   
-            var url = act["video"];
-            var queryString = url.substring( url.indexOf('?') + 1 );
-            var urlParams = new URLSearchParams(queryString);
-            if (urlParams.has('v')) {
-                //urls.push(urlParams.get('v'))
-                act['v'] = urlParams.get('v');
-                if (urlParams.has('t')){
-                    var t = urlParams.get('t');
-                    if (t.endsWith('s')) t = t.replace(/s$/, "");
-                    if (t!='') t = parseInt(t);
-                }
-            }
-        } 
-        if ('stage' in act) {
-            var stage = act['stage'];
-            if (stages.indexOf(stage) == -1)
-                stages.push(stage)
-        }
-        if ('start' in act) {
-            var start_date = act['start'].split(' ')[0];
-            if (days.indexOf(start_date) == -1)
-                days.push(start_date)
-            act['starting'] = Date.parse(act['start']);
-        }
-        if ('end' in act) {
-            var end_date = act['end'].split(' ')[0];
-            if (days.indexOf(end_date) == -1)
-                days.push(end_date)
-            act['ending'] = Date.parse(act['end']);
-        }
-        acts.push(act);
-    }
-}
+    
 
 //alert(days)
 //alert(stages)
@@ -339,23 +194,79 @@ function createSelector(parent_id, selector_id, vals){
     parent.appendChild(selector);
 }
 
-// Add days
-createSelector('daySelect_div', "daySelect", days)
-
-// Add stages
-createSelector('stageSelect_div', 'stageSelect', stages)
 
 
+function setUp(items) {
 
+    var itemlist = items.split('\n');
 
+    for (var item of itemlist){
+        if (item.startsWith("act = ")) {
+            var item_str = item.replace("act = ", "");
+            var act = JSON.parse(item_str);
+            act['v'] = '';
+            act['t'] = 0;
+            if ('video' in act){   
+                var url = act["video"];
+                var queryString = url.substring( url.indexOf('?') + 1 );
+                var urlParams = new URLSearchParams(queryString);
+                if (urlParams.has('v')) {
+                    //urls.push(urlParams.get('v'))
+                    act['v'] = urlParams.get('v');
+                    if (urlParams.has('t')){
+                        var t = urlParams.get('t');
+                        if (t.endsWith('s')) t = t.replace(/s$/, "");
+                        if (t!='') t = parseInt(t);
+                    }
+                }
+            } 
+            if ('stage' in act) {
+                var stage = act['stage'];
+                if (stages.indexOf(stage) == -1)
+                    stages.push(stage)
+            }
+            if ('start' in act) {
+                var start_date = act['start'].split(' ')[0];
+                if (days.indexOf(start_date) == -1)
+                    days.push(start_date)
+                act['starting'] = Date.parse(act['start']);
+            }
+            if ('end' in act) {
+                var end_date = act['end'].split(' ')[0];
+                if (days.indexOf(end_date) == -1)
+                    days.push(end_date)
+                act['ending'] = Date.parse(act['end']);
+            }
+            acts.push(act);
+        }
+    }
 
+    // Add days
+    createSelector('daySelect_div', "daySelect", days);
+
+    // Add stages
+    createSelector('stageSelect_div', 'stageSelect', stages);
+}
+
+function getItems() {
+    var xhr=new XMLHttpRequest();
+    xhr.open("GET","listing.txt");
+    xhr.onload=function(){
+        items = xhr.responseText;
+        setUp(items);
+
+        document.getElementById('daySelect_div').addEventListener("change", setVideo);
+        document.getElementById('stageSelect_div').addEventListener("change", setVideo);
+        document.getElementById('daySelect_div').addEventListener("click", setVideo);
+        document.getElementById('stageSelect_div').addEventListener("click", setVideo);
+
+        setVideo();
+    }
+    xhr.send();
+}
 
 document.addEventListener('DOMContentLoaded', function(event) {
-    document.getElementById('daySelect_div').addEventListener("change", setVideo);
-    document.getElementById('stageSelect_div').addEventListener("change", setVideo);
-    document.getElementById('daySelect_div').addEventListener("click", setVideo);
-    document.getElementById('stageSelect_div').addEventListener("click", setVideo);
-    setVideo();
+    getItems();
 })
 
 
