@@ -109,10 +109,11 @@ function getNow(){
         var asif = document.querySelector('input[name="day_buttons"]:checked').value.split('-');
         var asif_date = asif[0]+'-'+asif[1]+'-'+asif[2];
         console.log("asif date is"); console.log(asif_date);
-        var asif_time = nowish.getHours()+':'+nowish.getMinutes();
-        nowish = new Date((asif_date +' '+ asif_time).replace(/\s/, 'T'));
+        var asif_time = nowish.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})+':'+nowish.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+        var time_str = (asif_date +' '+ asif_time).replace(/\s/, 'T');
+        nowish = new Date(time_str);
     }
-    console.log('getnow', nowish)
+    console.log('getnow', nowish, time_str)
     return nowish;
 }
 
@@ -124,11 +125,11 @@ var acts = [];
 
 var callback_timer = [];
 
-
 function setVideo(){
     clearTimeout(callback_timer);
+    var nowish_dt = getNow();
+    var nowish = Date.parse(nowish_dt);
 
-    var nowish = Date.parse(getNow());
     var vid = '';
     var ts = 0;
     var starting;
@@ -139,12 +140,29 @@ function setVideo(){
 
     var stage = document.querySelector('input[name="stage_buttons"]:checked').value;
 
+    var stage_acts = [];
+
+    var acts_ul = document.createElement('ul');
+    acts_ul.id = 'stagetimeslist';
+    for (var act of stageLists[stage]) {
+        var dt = new Date(act['start'].replace(/\s/, 'T'));
+        var dte = new Date(act['end'].replace(/\s/, 'T'));
+        if ((dt.getDay()==nowish_dt.getDay()) && (dt.getHours()>9)) {
+            var acts_li = document.createElement('li');
+            acts_li.innerHTML =  dt.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ':' + dt.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})+' - '+ dte.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ':' + dte.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ' '+ act['act'];
+            acts_ul.prepend(acts_li);
+        }
+    }
+    var parent = document.getElementById('stagelist_div');
+    parent.innerHTML = '';
+    parent.appendChild(acts_ul);
+
     // find what's on by iterating till we find something
-    for (var act of acts) {
+    for (var act of stageLists[stage]) {
         //console.log('nowish', act, nowish, (new Date(nowish)).toUTCString(), (new Date(act['starting'])).toUTCString())
-        console.log('noiwsh', nowish, 'starting', act['starting'], act['ending'],(new Date(act['starting'])).toUTCString())
+        console.log('noiwsh', getNow(),nowish, 'starting', act['starting'], act['ending'],(new Date(act['starting'])).toUTCString())
         console.log(stage, act['stage'])
-        if ((stage == act['stage']) && ('v' in act) && (nowish >= act['starting']) && (nowish <=act['ending'])) {
+        if (('v' in act) && (nowish >= act['starting']) && (nowish <=act['ending'])) {
             console.log('HURRAH', act['starting'])
             vid = act['v'];
             if ('t' in act) ts = act['t'];
@@ -155,7 +173,7 @@ function setVideo(){
     }
 
     var parent = document.getElementById('festival_video');
-    parent.innerHTML = ''
+    parent.innerHTML = '';
 
     if (vid!='') {
         // calculate offset
@@ -186,6 +204,11 @@ function setVideo(){
         div.setAttribute("id", "festiframe");
         div.setAttribute("class", "noshow");
         div.innerHTML = '<h3>All quiet...</h3><div>Please come back to this stage later...</div>';
+        var cln = acts_ul.cloneNode(true);
+        cln.id = 'stagetimeslist_pending';
+        cln.setAttribute('class','mamaregular');
+        div.appendChild(cln);
+
         parent.appendChild(div);
 
         if (document.getElementById("auto_refresh").checked == true){
@@ -234,6 +257,7 @@ console.log(el.getElementById( 'jq-input1' ).value);
         <div id='merch'></div>
         <div id='refresher'><input type="checkbox" id="auto_refresh" name="auto_refresh" checked onclick="setVideo()">
             <label for="auto_refresh">Auto-refresh if session has ended.</div>
+        <div id='stagelist_div'></div>
     </div>
     <script>
     
@@ -298,6 +322,7 @@ function createSelector(parent_id, selector_id, vals){
 }
 
 
+var stageLists = {};
 
 function setUp(items) {
 
@@ -323,11 +348,6 @@ function setUp(items) {
                     }
                 }
             } 
-            if ('stage' in act) {
-                var stage = act['stage'];
-                if (stages.indexOf(stage) == -1)
-                    stages.push(stage)
-            }
             if ('start' in act) {
                 var start_date = act['start'].split(' ')[0];
                 if (days.indexOf(start_date) == -1)
@@ -339,6 +359,15 @@ function setUp(items) {
                 if (days.indexOf(end_date) == -1)
                     days.push(end_date)
                 act['ending'] = Date.parse(act['end'].replace(/\s/, 'T'));
+            }
+            if ('stage' in act) {
+                var stage = act['stage'];
+                if (stages.indexOf(stage) == -1)
+                    stages.push(stage)
+                if (!(act['stage'] in stageLists)) {
+                    stageLists[act['stage']] = [];
+                }
+                stageLists[act['stage']].push(act)
             }
             acts.push(act);
         }
