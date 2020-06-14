@@ -91,7 +91,7 @@ function getNow(){
         var asif_date = asif[0]+'-'+asif[1]+'-'+asif[2];
         console.log("asif date is"); console.log(asif_date);
         var asif_time = nowish.getHours()+':'+nowish.getMinutes();
-        nowish = new Date(asif_date +' '+ asif_time);
+        nowish = new Date((asif_date +' '+ asif_time).replace(/\s/, 'T'));
     }
     return nowish;
 }
@@ -115,7 +115,7 @@ function setVideo(){
 
     // find what's on by iterating till we find something
     for (var act of acts) {
-        //console.log('nowish', (new Date(nowish)).toUTCString())
+        console.log('nowish', act, (new Date(nowish)).toUTCString(), (new Date(act['starting'])).toUTCString())
         //console.log('starting', (new Date(act['starting'])).toUTCString())
         console.log(stage, act['stage'])
         if ((stage == act['stage']) && ('v' in act) && (nowish >= act['starting']) && (nowish <=act['ending'])) {
@@ -294,13 +294,13 @@ function setUp(items) {
                 var start_date = act['start'].split(' ')[0];
                 if (days.indexOf(start_date) == -1)
                     days.push(start_date)
-                act['starting'] = Date.parse(act['start']);
+                act['starting'] = Date.parse(act['start'].replace(/\s/, 'T'));
             }
             if ('end' in act) {
                 var end_date = act['end'].split(' ')[0];
                 if (days.indexOf(end_date) == -1)
                     days.push(end_date)
-                act['ending'] = Date.parse(act['end']);
+                act['ending'] = Date.parse(act['end'].replace(/\s/, 'T'));
             }
             acts.push(act);
         }
