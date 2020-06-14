@@ -89,8 +89,38 @@ act = {"start":"2020-07-10 15:30","end":"2020-07-10 16:10","stage":"Dean 1","act
 
 act = {"start":"2020-07-10 15:30","end":"2020-07-10 16:10","stage":"Dean 2","act":"New Act"}
 
+
+
 `
     </script>
+
+    <style>
+
+.form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: 0;
+  padding:10px;
+  margin:-5px -20px -5px -5px;
+}
+
+.form-select option {
+  display:inline-block;
+}
+
+.form-select {
+  display:inline-block;
+  vertical-align:top;
+  overflow:hidden;
+}
+
+.noshow {
+    border-style: solid;
+    margin: 25px 50px 75px 100px;
+}
+
+    </style>
     <script>
 
 
@@ -137,13 +167,14 @@ function setVideo(){
         }
     }
 
+    var parent = document.getElementById('festival_video');
+    parent.innerHTML = ''
+
     if (vid!='') {
         // calculate offset
         var time_delta = Math.round((nowish - starting)/1000);
         var start = time_delta + ts;
         console.log(vid, time_delta, ts)
-        var parent = document.getElementById('festival_video');
-        parent.innerHTML = ''
         //<iframe width="560" height="315" src="https://www.youtube.com/embed/rZwv_3mcgQk?start=634" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         var iframe = document.createElement('iframe');
         iframe.setAttribute("id", "festiframe");
@@ -158,25 +189,53 @@ function setVideo(){
         parent.appendChild(iframe);
 
         //<iframe width="560" height="315" src="https://www.youtube.com/embed/{vid}?start={start}&amp;autoplay=1" frameborder="0" allowfullscreen></iframe>
+    } else {
+        var div = document.createElement('div');
+        div.setAttribute("id", "festiframe");
+        div.setAttribute("class", "noshow");
+        div.innerHTML = '<h3>All quiet...</h3><div>Please come back to this stage later...</div>';
+        parent.appendChild(div);
     }
 
 }
 
     </script>
+    <script>//test scraper
+    // This will be blocked by CORS, probably?
+    function GetData()  {
+  var XMLReq = new XMLHttpRequest();
+
+  XMLReq.open( "GET", "https://clashfinder.com/s/inlieuofmissedfestivals2020/?edit", false )
+
+
+  XMLReq.onreadystatechange = function() {
+    if(XMLReq.readyState == 4 && XMLReq.status == 200) {
+      var el = document.createElement( 'html' );
+el.innerHTML = XMLReq.responseText;
+console.log(el.getElementById( 'jq-input1' ).value);
+
+    }
+  }
+
+  XMLReq.send();
+}
+
+</script>
 </head>
 
 <body>
     <h1>In Lieu Of Missed Festivals, 2020</h1>
     <div id='about'>A fantasy festival site, curated via <a href="https://clashfinder.com">Clashfinder.com</a></div>
     <div id='main'>
-        <div id='daySelect_div' onchange="setVideo()"></div>
-        <div id='stageSelect_div' onchange="setVideo()"></div>
+        <div id='daySelect_div'></div>
+        <div id='stageSelect_div'></div>
         <div>
             <input type="checkbox" id="asiftoday" name="today" checked>
             <label for="asiftoday">As if today...</label>
         </div>
         <div id='festival_video'></div>
         <div id='merch'></div>
+        <div>Festival listing on Clashfinder: <a href="https://clashfinder.com/s/inlieuofmissedfestivals2020/">inlieuofmissedfestivals2020</a></div>
     </div>
     <script>
     var itemlist = items.split('\n');
@@ -231,45 +290,43 @@ for (var item of itemlist){
 //alert(days)
 //alert(stages)
 
+function createSelector(parent_id, selector_id, vals){
+    var parent = document.getElementById(parent_id);
+    //Create and append select list
+    var selector = document.createElement("select");
+    selector.id = selector_id;
+    selector.class = "form-select";
+    selector.size = "3";
 
+    //Create and append the options
+    for (var i = 0; i < vals.length; i++) {
+        var option = document.createElement("option");
+        if (i == 0) option.selected = 'selected';
+        option.value = vals[i];
+        option.text = vals[i];
+        selector.appendChild(option);
+    }
+
+    parent.appendChild(selector);
+}
 
 // Add days
-var parent = document.getElementById('daySelect_div');
-
-//Create and append select list
-var daySelect = document.createElement("select");
-daySelect.id = "daySelect";
-
-//Create and append the options
-for (var i = 0; i < days.length; i++) {
-    var option = document.createElement("option");
-    option.value = days[i];
-    option.text = days[i];
-    daySelect.appendChild(option);
-}
-
-parent.appendChild(daySelect);
-
+createSelector('daySelect_div', "daySelect", days)
 
 // Add stages
-var parent = document.getElementById('stageSelect_div');
-
-//Create and append select list
-var stageSelect = document.createElement("select");
-stageSelect.id = "stageSelect";
-
-//Create and append the options
-for (var i = 0; i < stages.length; i++) {
-    var option = document.createElement("option");
-    option.value = stages[i];
-    option.text = stages[i];
-    stageSelect.appendChild(option);
-}
-
-parent.appendChild(stageSelect);
+createSelector('stageSelect_div', 'stageSelect', stages)
 
 
-setVideo();
+
+
+
+
+document.addEventListener('DOMContentLoaded', function(event) {
+    document.getElementById('daySelect_div').addEventListener("change", setVideo);
+    document.getElementById('stageSelect_div').addEventListener("change", setVideo);
+    setVideo();
+})
+
 
     </script>
 </body>
