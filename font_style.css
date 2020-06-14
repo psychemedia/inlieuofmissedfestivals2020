@@ -1,0 +1,52 @@
+/* font converted using font-converter.net. thank you! */
+@font-face {
+  font-family: "Fishinthebathroom";
+  src: url("./fonts/FishInTheBathroom-L803.eot"); /* IE9 Compat Modes */
+  src: url("./fonts/FishInTheBathroom-L803.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("./fonts/FishInTheBathroom-L803.otf") format("opentype"), /* Open Type Font */
+    url("./fonts/FishInTheBathroom-L803.svg") format("svg"), /* Legacy iOS */
+    url("./fonts/FishInTheBathroom-L803.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("./fonts/FishInTheBathroom-L803.woff") format("woff"), /* Modern Browsers */
+    url("./fonts/FishInTheBathroom-L803.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "HippieMovement";
+  src: url("./fonts/HippieMovement.eot"); /* IE9 Compat Modes */
+  src: url("./fonts/HippieMovement.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("./fonts/HippieMovement.otf") format("opentype"), /* Open Type Font */
+    url("./fonts/HippieMovement.svg") format("svg"), /* Legacy iOS */
+    url("./fonts/HippieMovement.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("./fonts/HippieMovement.woff") format("woff"), /* Modern Browsers */
+    url("./fonts/HippieMovement.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PsychedeliaHM";
+  src: url("./fonts/PsychedeliaHM.eot"); /* IE9 Compat Modes */
+  src: url("./fonts/PsychedeliaHM.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("./fonts/PsychedeliaHM.otf") format("opentype"), /* Open Type Font */
+    url("./fonts/PsychedeliaHM.svg") format("svg"), /* Legacy iOS */
+    url("./fonts/PsychedeliaHM.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("./fonts/PsychedeliaHM.woff") format("woff"), /* Modern Browsers */
+    url("./fonts/PsychedeliaHM.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MamaRegular";
+  src: url("./fonts/MamaRegular-aygE.eot"); /* IE9 Compat Modes */
+  src: url("./fonts/MamaRegular-aygE.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("./fonts/MamaRegular-aygE.otf") format("opentype"), /* Open Type Font */
+    url("./fonts/MamaRegular-aygE.svg") format("svg"), /* Legacy iOS */
+    url("./fonts/MamaRegular-aygE.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("./fonts/MamaRegular-aygE.woff") format("woff"), /* Modern Browsers */
+    url("./fonts/MamaRegular-aygE.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
