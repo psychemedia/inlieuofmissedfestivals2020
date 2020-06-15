@@ -4,255 +4,267 @@
     <title>In Lieu Of Missed Festivals, 2020</title>
     <link rel="stylesheet" href="font_style.css" type="text/css" media="all" />
     <style>
+        .formSelect {
+            height: 44px;
+            border: none;
+            overflow: hidden;
+        }
 
-.formSelect {
-  height: 44px;
-  border: none;
-  overflow: hidden;
-}
-.formSelect::-moz-focus-inner {
-  border: 0;
-}
-.formSelect:focus {
-  outline: none;
-}
-.formSelect option{
-  font-size: 1.2em;
-  padding: 10px 10px;
-  text-align: center;
-  margin-right: 20px;
-  display: inline-block;
-  cursor: pointer;
+        .formSelect::-moz-focus-inner {
+            border: 0;
+        }
 
-  border-radius: 5px;
-}
+        .formSelect:focus {
+            outline: none;
+        }
 
-#stageSelect option{
-  border:rgb(185, 15, 150) solid 1px;
-  color: rgb(185, 15, 150);
-}
+        .formSelect option {
+            font-size: 1.2em;
+            padding: 10px 10px;
+            text-align: center;
+            margin-right: 20px;
+            display: inline-block;
+            cursor: pointer;
 
-#daySelect option{
-  border:rgb(40, 15, 185) solid 1px;
-  color: rgb(40, 15, 185);
-}
+            border-radius: 5px;
+        }
 
-#daySelect_div, #actSelect_div, #asiftoday_div {
-    margin: 25px;
-}
+        #stageSelect option {
+            border: rgb(185, 15, 150) solid 1px;
+            color: rgb(185, 15, 150);
+        }
 
-.noshow {
-    border-style: solid;
-    margin: 25px 50px 75px 100px;
-}
+        #daySelect option {
+            border: rgb(40, 15, 185) solid 1px;
+            color: rgb(40, 15, 185);
+        }
 
-/* https://markheath.net/post/customize-radio-button-css */
-.radio-toolbar input[type="radio"] {
-  opacity: 0;
-  position: fixed;
-  width: 0;
-}
+        #daySelect_div,
+        #actSelect_div,
+        #asiftoday_div {
+            margin: 25px;
+        }
 
-.radio-toolbar label {
-    display: inline-block;
-    background-color: #ddd;
-    padding: 10px 20px;
-    font-family: sans-serif, Arial;
-    font-size: 16px;
-    border: 2px solid #444;
-    border-radius: 4px;
-}
+        .noshow {
+            border-style: solid;
+            margin: 25px 50px 75px 100px;
+        }
 
-.radio-toolbar input[type="radio"]:checked + label {
-    background-color:#bfb;
-    border-color: #4c4;
-}
+        /* https://markheath.net/post/customize-radio-button-css */
+        .radio-toolbar input[type="radio"] {
+            opacity: 0;
+            position: fixed;
+            width: 0;
+        }
 
-.radio-toolbar input[type="radio"]:focus + label {
-    border: 2px dashed #444;
-}
+        .radio-toolbar label {
+            display: inline-block;
+            background-color: #ddd;
+            padding: 10px 20px;
+            font-family: sans-serif, Arial;
+            font-size: 16px;
+            border: 2px solid #444;
+            border-radius: 4px;
+        }
 
-.fishinthebathroom {
-font-family: 'Fishinthebathroom';
-font-size: 32;
-}
-.hippiemovement{
-    font-family: 'HippieMovement';
-    font-size: 32;
-}
+        .radio-toolbar input[type="radio"]:checked+label {
+            background-color: #bfb;
+            border-color: #4c4;
+        }
 
-.psychedeliahm{
-    font-family: 'PsychedeliaHM';
-    font-size: 32;
-}
+        .radio-toolbar input[type="radio"]:focus+label {
+            border: 2px dashed #444;
+        }
 
-.mamaregular{
-    font-family: 'MamaRegular';
-    font-size: 32;
-}
+        .fishinthebathroom {
+            font-family: 'Fishinthebathroom';
+            font-size: 32;
+        }
 
+        .hippiemovement {
+            font-family: 'HippieMovement';
+            font-size: 32;
+        }
+
+        .psychedeliahm {
+            font-family: 'PsychedeliaHM';
+            font-size: 32;
+        }
+
+        .mamaregular {
+            font-family: 'MamaRegular';
+            font-size: 32;
+        }
     </style>
     <script>
 
 
-function getNow(){
-    var nowish = new Date();
-    //var now_hour = now.getHours();
-    //var now_min = now.getMinutes();
-    //var now_year = now.getFullYear();
-    //var now_month = now.getMonth();
-    //var now_date = now.getDate();
-    
-    if (document.getElementById("asiftoday").checked == true) {
-        var asif_el = document.getElementById("daySelect");
-        //var asif = asif_el.options[asif_el.selectedIndex].value.split('-');
-        var asif = document.querySelector('input[name="day_buttons"]:checked').value.split('-');
-        var asif_date = asif[0]+'-'+asif[1]+'-'+asif[2];
-        console.log("asif date is"); console.log(asif_date);
-        var asif_time = nowish.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})+':'+nowish.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
-        var time_str = (asif_date +' '+ asif_time).replace(/\s/, 'T');
-        nowish = new Date(time_str);
-    }
-    console.log('getnow', nowish, time_str)
-    return nowish;
-}
+        function getNow() {
+            var nowish = new Date();
+            //var now_hour = now.getHours();
+            //var now_min = now.getMinutes();
+            //var now_year = now.getFullYear();
+            //var now_month = now.getMonth();
+            //var now_date = now.getDate();
 
-var stages = [];
+            //if (document.getElementById("asiftoday").checked == true) {
+            var selected_day = document.querySelector('input[name="day_buttons"]:checked').value;
+            if (selected_day != 'live') {
+                var asif = selected_day.split('-');
+                var asif_date = asif[0] + '-' + asif[1] + '-' + asif[2];
+                console.log("asif date is"); console.log(asif_date);
+                var asif_time = nowish.getHours().toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false }) + ':' + nowish.getMinutes().toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
+                var time_str = (asif_date + ' ' + asif_time).replace(/\s/, 'T');
+                nowish = new Date(time_str);
+            }
 
-var days = [];
-
-var acts = [];
-
-var callback_timer = [];
-
-function setVideo(){
-    clearTimeout(callback_timer);
-    var nowish_dt = getNow();
-    var nowish = Date.parse(nowish_dt);
-
-    var vid = '';
-    var ts = 0;
-    var starting;
-    var ending;
-
-    var stage_el = document.getElementById("stageSelect");
-    //var stage = stage_el.options[stage_el.selectedIndex].value;
-
-    var stage = document.querySelector('input[name="stage_buttons"]:checked').value;
-
-    var stage_acts = [];
-
-    var acts_ul = document.createElement('ul');
-    acts_ul.id = 'stagetimeslist';
-    for (var act of stageLists[stage]) {
-        var dt = new Date(act['start'].replace(/\s/, 'T'));
-        var dte = new Date(act['end'].replace(/\s/, 'T'));
-        if ((dt.getDay()==nowish_dt.getDay()) && (dt.getHours()>9)) {
-            var acts_li = document.createElement('li');
-            acts_li.innerHTML =  dt.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ':' + dt.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})+' - '+ dte.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ':' + dte.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) + ' '+ act['act'];
-            acts_ul.prepend(acts_li);
+            console.log('getnow', nowish, time_str)
+            return nowish;
         }
-    }
-    var parent = document.getElementById('stagelist_div');
-    parent.innerHTML = '';
-    parent.appendChild(acts_ul);
 
-    // find what's on by iterating till we find something
-    for (var act of stageLists[stage]) {
-        //console.log('nowish', act, nowish, (new Date(nowish)).toUTCString(), (new Date(act['starting'])).toUTCString())
-        console.log('noiwsh', getNow(),nowish, 'starting', act['starting'], act['ending'],(new Date(act['starting'])).toUTCString())
-        console.log(stage, act['stage'])
-        if (('v' in act) && (nowish >= act['starting']) && (nowish <=act['ending'])) {
-            console.log('HURRAH', act['starting'])
-            vid = act['v'];
-            if ('t' in act) ts = act['t'];
-            starting = act['starting'];
-            ending = act['ending'];
-            break;
-        }
-    }
+        var stages = [];
 
-    var parent = document.getElementById('festival_video');
-    parent.innerHTML = '';
+        var days = [];
 
-    if (vid!='') {
-        // calculate offset
-        var time_delta = Math.round((nowish - starting)/1000);
-        var start = time_delta + ts;
-        console.log(vid, time_delta, ts)
-        //<iframe width="560" height="315" src="https://www.youtube.com/embed/rZwv_3mcgQk?start=634" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        var iframe = document.createElement('iframe');
-        iframe.setAttribute("id", "festiframe");
-        iframe.setAttribute("width", "560");
-        iframe.setAttribute("height", "315");
-        iframe.setAttribute("frameborder", "0");
-        iframe.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture");
-        iframe.setAttribute('allowFullScreen', '');
-        var url = `https://www.youtube.com/embed/${vid}?start=${start}&amp;autoplay=1`;
-        console.log(url);
-        iframe.setAttribute('src', url);
-        parent.appendChild(iframe);
+        var acts = [];
 
-        //Create callback after set
-        if (document.getElementById("auto_refresh").checked == true){
+        var callback_timer = [];
+
+        function setVideo() {
             clearTimeout(callback_timer);
-            callback_timer = setTimeout(function(){ setVideo(); }, ending - nowish + 120000);
+            var nowish_dt = getNow();
+            var nowish = Date.parse(nowish_dt);
+
+            var vid = '';
+            var ts = 0;
+            var starting;
+            var ending;
+
+            var stage_el = document.getElementById("stageSelect");
+            //var stage = stage_el.options[stage_el.selectedIndex].value;
+
+            var stage = document.querySelector('input[name="stage_buttons"]:checked').value;
+            var day = days_of_week[new Date(document.querySelector('input[name="day_buttons"]:checked').value).getDay()];
+
+            var stage_acts = [];
+
+            var acts_ul = document.createElement('ul');
+            acts_ul.id = 'stagetimeslist';
+            for (var act of stageLists[stage]) {
+                if ((act['start_dt'].getDay() == nowish_dt.getDay()) && (act['start_dt'].getHours() > 9)) {
+                    var acts_li = document.createElement('li');
+                    acts_li.innerHTML = act['start_dt'].getHours().toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false }) + ':' + act['start_dt'].getMinutes().toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false }) + ' - ' + act['end_dt'].getHours().toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false }) + ':' + act['end_dt'].getMinutes().toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false }) + ' ' + act['act'];
+                    acts_li.setAttribute('starting',act['starting']);
+                    acts_li.setAttribute('ending', act['ending']);
+                    acts_ul.prepend(acts_li);
+                }
+            }
+            var parent = document.getElementById('stagelist_div');
+            parent.innerHTML = '';
+            parent.appendChild(acts_ul);
+
+            // find what's on by iterating till we find something
+            for (var act of stageLists[stage]) {
+                //console.log('nowish', act, nowish, (new Date(nowish)).toUTCString(), (new Date(act['starting'])).toUTCString())
+                console.log('noiwsh', getNow(), nowish, 'starting', act['starting'], act['ending'], act['start_dt'].toUTCString())
+                console.log(stage, act['stage'])
+                if (('v' in act) && (nowish >= act['starting']) && (nowish <= act['ending'])) {
+                    console.log('HURRAH', act['starting'])
+                    vid = act['v'];
+                    if ('t' in act) ts = act['t'];
+                    starting = act['starting'];
+                    ending = act['ending'];
+                    break;
+                }
+            }
+
+            var parent = document.getElementById('festival_video');
+            parent.innerHTML = '';
+
+            if (vid != '') {
+                // calculate offset
+                var time_delta = Math.round((nowish - starting) / 1000);
+                var start = time_delta + ts;
+                console.log(vid, time_delta, ts)
+                //<iframe width="560" height="315" src="https://www.youtube.com/embed/rZwv_3mcgQk?start=634" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                var iframe = document.createElement('iframe');
+                iframe.setAttribute("id", "festiframe");
+                iframe.setAttribute("width", "560");
+                iframe.setAttribute("height", "315");
+                iframe.setAttribute("frameborder", "0");
+                iframe.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture");
+                iframe.setAttribute('allowFullScreen', '');
+                var url = `https://www.youtube.com/embed/${vid}?start=${start}&amp;autoplay=1`;
+                console.log(url);
+                iframe.setAttribute('src', url);
+                parent.appendChild(iframe);
+
+                //Create callback after set
+                if (document.getElementById("auto_refresh").checked == true) {
+                    clearTimeout(callback_timer);
+                    callback_timer = setTimeout(function () { setVideo(); }, ending - nowish + 120000);
+                }
+                //<iframe width="560" height="315" src="https://www.youtube.com/embed/{vid}?start={start}&amp;autoplay=1" frameborder="0" allowfullscreen></iframe>
+            } else {
+                var div = document.createElement('div');
+                div.setAttribute("id", "festiframe");
+                div.setAttribute("class", "noshow");
+                div.innerHTML = '<h2>'+ stage +' - '+ day +'</h2><h3>All quiet...</h3><div>Please come back to this stage later...</div>';
+                var cln = acts_ul.cloneNode(true);
+                cln.id = 'stagetimeslist_pending';
+                cln.setAttribute('class', 'mamaregular');
+                // strike out events that have passed
+                for (li of cln.getElementsByTagName("li")) {
+                    if (nowish > parseInt(li.getAttribute('starting')))
+                        li.innerHTML = '<s>'+li.innerHTML+'</s>';
+                }
+                div.appendChild(cln);
+
+                parent.appendChild(div);
+
+                if (document.getElementById("auto_refresh").checked == true) {
+                    clearTimeout(callback_timer);
+                    callback_timer = setTimeout(function () { setVideo(); }, 10000);
+                }
+            }
+
         }
-        //<iframe width="560" height="315" src="https://www.youtube.com/embed/{vid}?start={start}&amp;autoplay=1" frameborder="0" allowfullscreen></iframe>
-    } else {
-        var div = document.createElement('div');
-        div.setAttribute("id", "festiframe");
-        div.setAttribute("class", "noshow");
-        div.innerHTML = '<h3>All quiet...</h3><div>Please come back to this stage later...</div>';
-        var cln = acts_ul.cloneNode(true);
-        cln.id = 'stagetimeslist_pending';
-        cln.setAttribute('class','mamaregular');
-        div.appendChild(cln);
-
-        parent.appendChild(div);
-
-        if (document.getElementById("auto_refresh").checked == true){
-            clearTimeout(callback_timer);
-            callback_timer = setTimeout(function(){ setVideo(); }, 10000);
-        }
-    }
-
-}
 
     </script>
     <script>//test scraper
-    // This will be blocked by CORS, probably?
-    function GetData()  {
-  var XMLReq = new XMLHttpRequest();
+        // This will be blocked by CORS, probably?
+        function GetData() {
+            var XMLReq = new XMLHttpRequest();
 
-  XMLReq.open( "GET", "https://clashfinder.com/s/inlieuofmissedfestivals2020/?edit", false )
+            XMLReq.open("GET", "https://clashfinder.com/s/inlieuofmissedfestivals2020/?edit", false)
 
 
-  XMLReq.onreadystatechange = function() {
-    if(XMLReq.readyState == 4 && XMLReq.status == 200) {
-      var el = document.createElement( 'html' );
-el.innerHTML = XMLReq.responseText;
-console.log(el.getElementById( 'jq-input1' ).value);
+            XMLReq.onreadystatechange = function () {
+                if (XMLReq.readyState == 4 && XMLReq.status == 200) {
+                    var el = document.createElement('html');
+                    el.innerHTML = XMLReq.responseText;
+                    console.log(el.getElementById('jq-input1').value);
 
-    }
-  }
+                }
+            }
 
-  XMLReq.send();
-}
+            XMLReq.send();
+        }
 
-</script>
+    </script>
 </head>
 
 <body>
     <h1>In Lieu Of Missed Festivals, 2020</h1>
-    <div id='about'>A fantasy festival site, curated via <a href="https://clashfinder.com">Clashfinder.com</a></div>
+    <div id='about'>A <em>faux festival</em> site, curated via <a href="https://clashfinder.com">Clashfinder.com</a>
+    </div>
     <div id='main'>
         <div id='daySelect_div'></div>
         <div id='stageSelect_div'></div>
-        <div id='asiftoday_div'>
+        <!-- <div id='asiftoday_div'>
             <input type="checkbox" id="asiftoday" name="today" checked>
             <label for="asiftoday">View selected stage, on a selected day, as if it were today...</label>
-        </div>
+        </div> -->
         <div id='festival_video'></div>
         <div id='merch'></div>
         <div id='refresher'><input type="checkbox" id="auto_refresh" name="auto_refresh" checked onclick="setVideo()">
@@ -260,148 +272,160 @@ console.log(el.getElementById( 'jq-input1' ).value);
         <div id='stagelist_div'></div>
     </div>
     <script>
-    
-
-//alert(days)
-//alert(stages)
-
-var divUid = 0;
-function newId(stub='id_'){
-    divUid = divUid +1;
-    return stub+divUid;
-}
-function createRadio(parent_id, radio_id, radioName, vals){
-    var parent = document.getElementById(parent_id);
-    var radio_div = document.createElement("div");
-    radio_div.id = radio_id;
-    radio_div.className = "radio-toolbar";
-
-    //Create and append the options
-    for (var i = 0; i < vals.length; i++) {
-        var input = document.createElement("input");
-        input.setAttribute('type', 'radio');
-        input.id = newId();
-        input.name = radioName;
-        input.value = vals[i];
-        input.onclick = function() {clearTimeout(callback_timer); setVideo();};
-        if (i == 0) input.checked = true;
-
-        var label = document.createElement("label");
-        label.setAttribute('for', input.id);
-        label.setAttribute('name', vals[i]);
-        label.innerHTML = vals[i];
-        radio_div.appendChild(input);
-        radio_div.appendChild(label);
-    }
-
-    parent.appendChild(radio_div);
-
-}
-
-function createSelector(parent_id, selector_id, vals){
-    var parent = document.getElementById(parent_id);
-    //Create and append select list
-    var selector = document.createElement("select");
-    selector.setAttribute('multiple',  true);
-    //selector.multiple = true;
-    selector.setAttribute('id',  selector_id)
-    //selector.id = selector_id;
-    selector.setAttribute('class',  "formSelect")
-    //selector.className = "formSelect";
-
-    //Create and append the options
-    for (var i = 0; i < vals.length; i++) {
-        var option = document.createElement("option");
-        if (i == 0) option.selected = 'selected';
-        option.value = vals[i];
-        option.text = vals[i];
-        selector.appendChild(option);
-    }
-
-    parent.appendChild(selector);
-}
 
 
-var stageLists = {};
+        //alert(days)
+        //alert(stages)
 
-function setUp(items) {
+        var days_of_week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-    var itemlist = items.split('\n');
-
-    for (var item of itemlist){
-        if (item.startsWith("act = ")) {
-            var item_str = item.replace("act = ", "");
-            var act = JSON.parse(item_str);
-            act['v'] = '';
-            act['t'] = 0;
-            if ('video' in act){   
-                var url = act["video"];
-                var queryString = url.substring( url.indexOf('?') + 1 );
-                var urlParams = new URLSearchParams(queryString);
-                if (urlParams.has('v')) {
-                    //urls.push(urlParams.get('v'))
-                    act['v'] = urlParams.get('v');
-                    if (urlParams.has('t')){
-                        var t = urlParams.get('t');
-                        if (t.endsWith('s')) t = t.replace(/s$/, "");
-                        if (t!='') t = parseInt(t);
-                    }
-                }
-            } 
-            if ('start' in act) {
-                var start_date = act['start'].split(' ')[0];
-                if (days.indexOf(start_date) == -1)
-                    days.push(start_date)
-                act['starting'] = Date.parse(act['start'].replace(/\s/, 'T'));
-            }
-            if ('end' in act) {
-                var end_date = act['end'].split(' ')[0];
-                if (days.indexOf(end_date) == -1)
-                    days.push(end_date)
-                act['ending'] = Date.parse(act['end'].replace(/\s/, 'T'));
-            }
-            if ('stage' in act) {
-                var stage = act['stage'];
-                if (stages.indexOf(stage) == -1)
-                    stages.push(stage)
-                if (!(act['stage'] in stageLists)) {
-                    stageLists[act['stage']] = [];
-                }
-                stageLists[act['stage']].push(act)
-            }
-            acts.push(act);
+        var divUid = 0;
+        function newId(stub = 'id_') {
+            divUid = divUid + 1;
+            return stub + divUid;
         }
-    }
+        function createRadio(parent_id, radio_id, radioName, vals, daymap = false) {
+            var parent = document.getElementById(parent_id);
+            var radio_div = document.createElement("div");
+            radio_div.id = radio_id;
+            radio_div.className = "radio-toolbar";
+            var dtstart = ((daymap) ? -1 : 0);
+            //Create and append the options
+            for (var i = dtstart; i < vals.length; i++) {
+                var input = document.createElement("input");
+                input.setAttribute('type', 'radio');
+                input.id = newId();
+                input.name = radioName;
+                if (i == -1) {
+                    input.value = 'live';
+                } else input.value = vals[i];
+                input.onclick = function () { clearTimeout(callback_timer); setVideo(); };
+                var label = document.createElement("label");
+                label.setAttribute('for', input.id);
+                var daylabel = '';
+                if (daymap)
+                    if (i == -1)
+                        daylabel = 'Live';
+                    else
+                        daylabel = days_of_week[new Date(vals[i]).getDay()];
+                else
+                    daylabel = vals[i];
+                label.setAttribute('name', daylabel);
+                label.innerHTML = daylabel;
+                radio_div.appendChild(input);
+                radio_div.appendChild(label);
+            }
+            radio_div.firstChild.checked = true;
+            parent.appendChild(radio_div);
 
-    // Add days
-    //createSelector('daySelect_div', "daySelect", days);
-    createRadio('daySelect_div', 'daySelect', 'day_buttons', days);
+        }
 
-    // Add stages
-    //createSelector('stageSelect_div', 'stageSelect', stages);
-    createRadio('stageSelect_div', 'stageSelect', 'stage_buttons', stages);
-}
+        function createSelector(parent_id, selector_id, vals) {
+            var parent = document.getElementById(parent_id);
+            //Create and append select list
+            var selector = document.createElement("select");
+            selector.setAttribute('multiple', true);
+            //selector.multiple = true;
+            selector.setAttribute('id', selector_id)
+            //selector.id = selector_id;
+            selector.setAttribute('class', "formSelect")
+            //selector.className = "formSelect";
 
-function getItems() {
-    var xhr=new XMLHttpRequest();
-    xhr.open("GET","listing.txt");
-    xhr.onload=function(){
-        items = xhr.responseText;
-        setUp(items);
+            //Create and append the options
+            for (var i = 0; i < vals.length; i++) {
+                var option = document.createElement("option");
+                if (i == 0) option.selected = 'selected';
+                option.value = vals[i];
+                option.text = vals[i];
+                selector.appendChild(option);
+            }
 
-        //document.getElementById('daySelect_div').addEventListener("change", setVideo);
-        //document.getElementById('stageSelect_div').addEventListener("change", setVideo);
-        //document.getElementById('daySelect_div').addEventListener("click", setVideo);
-        //document.getElementById('stageSelect_div').addEventListener("click", setVideo);
+            parent.appendChild(selector);
+        }
 
-        setVideo();
-    }
-    xhr.send();
-}
 
-document.addEventListener('DOMContentLoaded', function(event) {
-    getItems();
-})
+        var stageLists = {};
+
+        function setUp(items) {
+
+            var itemlist = items.split('\n');
+
+            for (var item of itemlist) {
+                if (item.startsWith("act = ")) {
+                    var item_str = item.replace("act = ", "");
+                    var act = JSON.parse(item_str);
+                    act['v'] = '';
+                    act['t'] = 0;
+                    if ('video' in act) {
+                        var url = act["video"];
+                        var queryString = url.substring(url.indexOf('?') + 1);
+                        var urlParams = new URLSearchParams(queryString);
+                        if (urlParams.has('v')) {
+                            //urls.push(urlParams.get('v'))
+                            act['v'] = urlParams.get('v');
+                            if (urlParams.has('t')) {
+                                var t = urlParams.get('t');
+                                if (t.endsWith('s')) t = t.replace(/s$/, "");
+                                if (t != '') t = parseInt(t);
+                            }
+                        }
+                    }
+                    if ('start' in act) {
+                        var start_date = act['start'].split(' ')[0];
+                        if (days.indexOf(start_date) == -1)
+                            days.push(start_date)
+                        act['starting'] = Date.parse(act['start'].replace(/\s/, 'T'));
+                        act['start_dt'] = new Date(act['start'].replace(/\s/, 'T'));
+                    }
+                    if ('end' in act) {
+                        var end_date = act['end'].split(' ')[0];
+                        if (days.indexOf(end_date) == -1)
+                            days.push(end_date)
+                        act['ending'] = Date.parse(act['end'].replace(/\s/, 'T'));
+                        act['end_dt'] = new Date(act['end'].replace(/\s/, 'T'));
+                    }
+                    if ('stage' in act) {
+                        var stage = act['stage'];
+                        if (stages.indexOf(stage) == -1)
+                            stages.push(stage)
+                        if (!(act['stage'] in stageLists)) {
+                            stageLists[act['stage']] = [];
+                        }
+                        stageLists[act['stage']].push(act)
+                    }
+                    acts.push(act);
+                }
+            }
+
+            // Add days
+            //createSelector('daySelect_div', "daySelect", days);
+            createRadio('daySelect_div', 'daySelect', 'day_buttons', days, true);
+
+            // Add stages
+            //createSelector('stageSelect_div', 'stageSelect', stages);
+            createRadio('stageSelect_div', 'stageSelect', 'stage_buttons', stages);
+        }
+
+        function getItems() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "listing.txt");
+            xhr.onload = function () {
+                items = xhr.responseText;
+                setUp(items);
+
+                //document.getElementById('daySelect_div').addEventListener("change", setVideo);
+                //document.getElementById('stageSelect_div').addEventListener("change", setVideo);
+                //document.getElementById('daySelect_div').addEventListener("click", setVideo);
+                //document.getElementById('stageSelect_div').addEventListener("click", setVideo);
+
+                setVideo();
+            }
+            xhr.send();
+        }
+
+        document.addEventListener('DOMContentLoaded', function (event) {
+            getItems();
+        })
 
 
     </script>
