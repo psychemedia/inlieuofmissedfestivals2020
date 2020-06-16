@@ -216,7 +216,7 @@
                 // strike out events that have passed
                 for (li of cln.getElementsByTagName("li")) {
                     if (nowish > parseInt(li.getAttribute('starting')))
-                        li.innerHTML = '<s>'+li.innerHTML+'</s>';
+                        li.innerHTML = '<s style="color:red">'+li.innerHTML+'</s>';
                 }
                 div.appendChild(cln);
 
