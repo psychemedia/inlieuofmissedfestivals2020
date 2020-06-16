@@ -105,12 +105,3 @@ act = {"start":"2020-07-12 14:30","end":"2020-07-12 15:10","stage":"Sacred Space
 act = {"start":"2020-07-12 16:00","end":"2020-07-12 16:45","stage":"Sacred Space","act":"Sinead O'connor","video":"https://www.youtube.com/watch?v=TdgHdasnEk8"}
 act = {"start":"2020-07-12 17:05","end":"2020-07-12 17:50","stage":"Sacred Space","act":"Hazel O'Connor","video":"https://www.youtube.com/watch?v=_ipkUpcNKps"}
 act = {"start":"2020-07-12 19:55","end":"2020-07-12 20:55","stage":"Sacred Space","act":"All About Eve","video":"https://www.youtube.com/watch?v=xlqn1rTHsxo"}
-
-act = {"start":"2020-07-10 15:30","end":"2020-07-10 16:10","stage":"Jess 1","act":"New Act"}
-
-act = {"start":"2020-07-10 15:30","end":"2020-07-10 16:10","stage":"Jess 2","act":"New Act"}
-
-act = {"start":"2020-07-10 15:30","end":"2020-07-10 16:10","stage":"Dean 1","act":"New Act"}
-
-act = {"start":"2020-07-10 15:30","end":"2020-07-10 16:10","stage":"Dean 2","act":"New Act"}
-
