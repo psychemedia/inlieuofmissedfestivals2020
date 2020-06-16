@@ -1,9 +1,20 @@
-
 act = {"start":"2020-07-10 14:00","end":"2020-07-10 14:20","stage":"Folk Tales","act":"Eddie Lenihan","video":"https://www.youtube.com/watch?v=JQBwyhkRd1I&t=60s"}
+act = {"start":"2020-07-10 14:30","end":"2020-07-10 14:37","stage":"Folk Tales","act":"Eddie Lenihan","artist":"Eddie Lenihan","video":"https://www.youtube.com/watch?v=dpXnIs57678"}
+act = {"start":"2020-07-10 14:45","end":"2020-07-10 14:53","stage":"Folk Tales","act":"Eddie Lenihan","artist":"Eddie Lenihan","video":"https://www.youtube.com/watch?v=belU7HnaMFY&t=44s"}
 act = {"start":"2020-07-10 15:00","end":"2020-07-10 15:05","stage":"Folk Tales","act":"Trials of Cato","video":"https://www.youtube.com/watch?v=GSxPrV6U9eU"}
-act = {"start":"2020-07-10 16:00","end":"2020-07-10 16:05","stage":"Folk Tales","act":"Trials of Cato","video":"https://www.youtube.com/watch?v=kw3RrTbNHnA"}
+act = {"start":"2020-07-10 15:10","end":"2020-07-10 15:20","stage":"Folk Tales","act":"Eddie Lenihan","video":"https://youtu.be/48qgmOzQCUg?t=72"}
+act = {"start":"2020-07-10 15:20","end":"2020-07-10 15:30","stage":"Folk Tales","act":"Eddie Lenihan","artist":"Eddie Lenihan","video":"https://www.youtube.com/watch?v=belU7HnaMFY"}
+act = {"start":"2020-07-10 15:35","end":"2020-07-10 15:47","stage":"Folk Tales","act":"Eddie Lenihan","video":"https://www.youtube.com/watch?v=yMV-pWH5RHw&t=10s"}
+act = {"start":"2020-07-10 15:50","end":"2020-07-10 16:00","stage":"Folk Tales","act":"Eddie Lenihan","artist":"Eddie Lenihan","video":"https://www.youtube.com/watch?v=Q_ez_g_VqEE"}
+act = {"start":"2020-07-10 16:10","end":"2020-07-10 16:15","stage":"Folk Tales","act":"Trials of Cato","video":"https://www.youtube.com/watch?v=kw3RrTbNHnA"}
 act = {"start":"2020-07-10 17:00","end":"2020-07-10 17:05","stage":"Folk Tales","act":"Trials of Cato","video":"https://www.youtube.com/watch?v=gBeKiopW3QY"}
+act = {"start":"2020-07-10 17:15","end":"2020-07-10 17:45","stage":"Folk Tales","act":"Daniel Morden","artist":"Daniel Morden","video":"https://www.youtube.com/watch?v=1kBuDNcTipU"}
 act = {"start":"2020-07-10 17:55","end":"2020-07-10 18:00","stage":"Folk Tales","act":"Trials of Cato","video":"https://www.youtube.com/watch?v=UyhjnGVdq5k"}
+act = {"start":"2020-07-10 19:00","end":"2020-07-10 19:30","stage":"Folk Tales","act":"Jess Silk","url":"https://beansontoastmusic.com/beans-on-toast-shop/","artist":"Jess Silk","video":"https://www.youtube.com/watch?v=WpP-IRJJt4M"}
+act = {"start":"2020-07-10 19:40","end":"2020-07-10 20:15","stage":"Folk Tales","act":"Beans on Toast","artist":"Beans on Toast","video":"https://www.youtube.com/watch?v=Wi_2I2c1ebk"}
+act = {"start":"2020-07-10 20:25","end":"2020-07-10 21:30","stage":"Folk Tales","act":"Grace Petrie","artist":"Grace Petrie","video":"https://www.youtube.com/watch?v=ADEgmKffmDo"}
+act = {"start":"2020-07-10 21:40","end":"2020-07-10 22:00","stage":"Folk Tales","act":"Kate Rusby","video":"https://www.youtube.com/watch?v=akBj2sXU4Ao"}
+act = {"start":"2020-07-10 22:15","end":"2020-07-10 23:10","stage":"Folk Tales","act":"First Aid Kit","artist":"First Aid Kit","video":"https://www.youtube.com/watch?v=7sppC6Va280"}
 act = {"start":"2020-07-10 23:15","end":"2020-07-11 00:00","stage":"Folk Tales","act":"Songhoy Blues","video":"https://www.youtube.com/watch?v=6oM3WD6aba0"}
 act = {"start":"2020-07-11 01:00","end":"2020-07-11 01:58","stage":"Folk Tales","act":"Georgie Fame","video":"https://www.youtube.com/watch?v=wzWPqB9uHEw"}
 act = {"start":"2020-07-11 03:00","end":"2020-07-11 03:55","stage":"Folk Tales","act":"Protect and Survive","type":"film","video":"https://www.youtube.com/watch?v=m6U9T3R3EQg"}
@@ -14,11 +25,14 @@ act = {"start":"2020-07-11 11:10","end":"2020-07-11 11:30","stage":"Folk Tales",
 act = {"start":"2020-07-11 11:45","end":"2020-07-11 12:15","stage":"Folk Tales","act":"Fred Dibnah","type":"other","video":"https://www.youtube.com/watch?v=QTv1a_nACCs"}
 act = {"start":"2020-07-11 12:30","end":"2020-07-11 12:40","stage":"Folk Tales","act":"Uiscedwr","video":"https://www.youtube.com/watch?v=Ch28Vkzeuis"}
 act = {"start":"2020-07-11 13:35","end":"2020-07-11 13:45","stage":"Folk Tales","act":"Uiscedwr","video":"https://www.youtube.com/watch?v=6-o3oPoq_Ss"}
+act = {"start":"2020-07-11 14:05","end":"2020-07-11 14:15","stage":"Folk Tales","act":"David Campbell","artist":"David Campbell","video":"https://www.youtube.com/watch?v=YNSHDjE590M"}
 act = {"start":"2020-07-11 14:25","end":"2020-07-11 14:35","stage":"Folk Tales","act":"Uiscedwr","video":"https://www.youtube.com/watch?v=66ryz8-khXg"}
+act = {"start":"2020-07-11 14:40","end":"2020-07-11 15:20","stage":"Folk Tales","act":"Cath Little","artist":"Cath Little","video":"https://www.youtube.com/watch?v=4mXBCofuQLw"}
 act = {"start":"2020-07-11 15:25","end":"2020-07-11 15:35","stage":"Folk Tales","act":"Uiscedwr","video":"https://www.youtube.com/watch?v=_bIQIgQRNWQ"}
 act = {"start":"2020-07-11 16:20","end":"2020-07-11 16:30","stage":"Folk Tales","act":"Uiscedwr","video":"https://www.youtube.com/watch?v=I1DgDIiQFm4"}
 act = {"start":"2020-07-11 17:15","end":"2020-07-11 17:25","stage":"Folk Tales","act":"Uiscedwr","video":"https://www.youtube.com/watch?v=NpgGRN6Wm3g"}
-act = {"start":"2020-07-11 18:20","end":"2020-07-11 18:30","stage":"Folk Tales","act":"Uiscedwr","video":"https://www.youtube.com/watch?v=j1h6_4mRSIU"}
+act = {"start":"2020-07-11 17:40","end":"2020-07-11 18:30","stage":"Folk Tales","act":"Amy Douglas","artist":"Amy Douglas","video":"https://www.youtube.com/watch?v=n9MNII_4fOg"}
+act = {"start":"2020-07-11 18:35","end":"2020-07-11 18:45","stage":"Folk Tales","act":"Uiscedwr","video":"https://www.youtube.com/watch?v=j1h6_4mRSIU"}
 act = {"start":"2020-07-11 19:00","end":"2020-07-11 19:15","stage":"Folk Tales","act":"Bad Shepherds","video":"https://www.youtube.com/watch?v=u-2KCN8Bmb8"}
 act = {"start":"2020-07-11 19:30","end":"2020-07-11 19:50","stage":"Folk Tales","act":"Arlo Guthrie","video":"https://www.youtube.com/watch?v=-yLg_bzwvxg"}
 act = {"start":"2020-07-11 20:00","end":"2020-07-11 21:20","stage":"Folk Tales","act":"Stewart Lee","video":"https://www.youtube.com/watch?v=VxN8PhKzZgY"}
@@ -31,8 +45,12 @@ act = {"start":"2020-07-12 04:15","end":"2020-07-12 06:00","stage":"Folk Tales",
 act = {"start":"2020-07-12 11:00","end":"2020-07-12 11:15","stage":"Folk Tales","act":"Mark Knopfler","video":"https://www.youtube.com/watch?v=OG__SwkV3wg"}
 act = {"start":"2020-07-12 11:25","end":"2020-07-12 11:40","stage":"Folk Tales","act":"Woodland crafts","type":"film","video":"https://www.youtube.com/watch?v=CLkK7HCryHc"}
 act = {"start":"2020-07-12 11:50","end":"2020-07-12 11:55","stage":"Folk Tales","act":"Physics Magic","type":"film","video":"https://www.youtube.com/watch?v=IzQsYnLz2Gc"}
+act = {"start":"2020-07-12 13:15","end":"2020-07-12 13:45","stage":"Folk Tales","act":"Shonaleigh","artist":"Shonaleigh","video":"https://www.youtube.com/watch?v=aJF6Pwvkqjk"}
 act = {"start":"2020-07-12 15:00","end":"2020-07-12 15:30","stage":"Folk Tales","act":"Nick Hennessy","video":"https://www.youtube.com/watch?v=sedZvSu84Tw"}
-act = {"start":"2020-07-12 19:55","end":"2020-07-12 21:00","stage":"Folk Tales","act":"Nikolaz Cadoret"}
+act = {"start":"2020-07-12 19:00","end":"2020-07-12 19:05","stage":"Folk Tales","act":"Lily Neill","artist":"Lily Neill","video":"https://www.youtube.com/watch?v=tQB70NvG4e8"}
+act = {"start":"2020-07-12 19:20","end":"2020-07-12 20:25","stage":"Folk Tales","act":"Nikolaz Cadoret"}
+act = {"start":"2020-07-12 20:35","end":"2020-07-12 21:15","stage":"Folk Tales","act":"The Outside Track","artist":"The Outside Track","video":"https://www.youtube.com/watch?v=G-fUplyvF1Y"}
+act = {"start":"2020-07-12 21:25","end":"2020-07-12 22:30","stage":"Folk Tales","act":"Gaz Brookfield","video":"https://www.youtube.com/watch?v=Xp_HnlabhhU"}
 act = {"start":"2020-07-12 22:40","end":"2020-07-13 00:00","stage":"Folk Tales","act":"Fishermens Friends","video":"https://www.youtube.com/watch?v=NgfbQj3Qtf8"}
 act = {"start":"2020-07-13 00:30","end":"2020-07-13 01:00","stage":"Folk Tales","act":"The Interrupters (acoustic)","video":"https://www.youtube.com/watch?v=Df-b--DKWC4"}
 
@@ -86,7 +104,7 @@ act = {"start":"2020-07-12 13:10","end":"2020-07-12 13:50","stage":"Sacred Space
 act = {"start":"2020-07-12 14:30","end":"2020-07-12 15:10","stage":"Sacred Space","act":"This Mortal Coil","video":"https://www.youtube.com/watch?v=_Dvd6o0qqoY&list=PLlKKgwDIzfphGZ65ZdOI3CtQJFVI64_B9&index=7&t=0s"}
 act = {"start":"2020-07-12 16:00","end":"2020-07-12 16:45","stage":"Sacred Space","act":"Sinead O'connor","video":"https://www.youtube.com/watch?v=TdgHdasnEk8"}
 act = {"start":"2020-07-12 17:05","end":"2020-07-12 17:50","stage":"Sacred Space","act":"Hazel O'Connor","video":"https://www.youtube.com/watch?v=_ipkUpcNKps"}
-act = {"start":"2020-07-12 19:55","end":"2020-07-12 20:55","stage":"Sacred Space","act":"All about Eve","video":"https://www.youtube.com/watch?v=xlqn1rTHsxo"}
+act = {"start":"2020-07-12 19:55","end":"2020-07-12 20:55","stage":"Sacred Space","act":"All About Eve","video":"https://www.youtube.com/watch?v=xlqn1rTHsxo"}
 
 act = {"start":"2020-07-10 15:30","end":"2020-07-10 16:10","stage":"Jess 1","act":"New Act"}
 
