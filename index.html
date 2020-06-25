@@ -145,7 +145,7 @@
             var nowish_schedule_dt = getNow();
             var nowish_schedule = Date.parse(nowish_schedule_dt);
             if ((nowish_schedule_dt.getHours()>=0) && (nowish_schedule_dt.getHours()<9))
-                nowish_schedule_dt.setDate(nowish.getDate()-1);
+                nowish_schedule_dt.setDate(nowish_schedule_dt.getDate()-1);
 
             // Video metadata
             var vid = '';
