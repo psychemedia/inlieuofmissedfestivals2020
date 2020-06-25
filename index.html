@@ -133,12 +133,21 @@
         function setVideo() {
             clearTimeout(callback_timer);
             var nowish_dt = getNow();
-            var nowish_video = getNow();
             var nowish = Date.parse(nowish_dt);
 
             //if we're after midnight, but before 9am, it's yesterday...
-            if ((nowish_video.getHours()>=0) && (nowish_video.getHours()<9))
-            nowish_video.setDate(nowish.getDate()+1); 
+            //What's the logic of this?
+            //If it's after midnight:
+            // nowish is after midnight
+            // if I select Thursday, I want Thursday listing
+            // - play today: so use now-ish
+            // - display yesterday
+            var nowish_schedule_dt = getNow();
+            var nowish_schedule = Date.parse(nowish_schedule_dt);
+            if ((nowish_schedule_dt.getHours()>=0) && (nowish_schedule_dt.getHours()<9))
+                nowish_schedule_dt.setDate(nowish.getDate()-1);
+
+            // Video metadata
             var vid = '';
             var ts = 0;
             var starting;
@@ -155,7 +164,7 @@
             var acts_ul = document.createElement('ul');
             acts_ul.id = 'stagetimeslist';
             for (var act of stageLists[stage]) {
-                if ((act['start_dt'].getDay() == nowish_dt.getDay()) && (act['start_dt'].getHours() > 9)) {
+                if ((act['start_dt'].getDay() == nowish_schedule_dt.getDay()) && (act['start_dt'].getHours() > 9)) {
                     var acts_li = document.createElement('li');
                     acts_li.innerHTML = act['start_dt'].getHours().toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false }) + ':' + act['start_dt'].getMinutes().toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false }) + ' - ' + act['end_dt'].getHours().toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false }) + ':' + act['end_dt'].getMinutes().toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false }) + ' ' + act['act'];
                     acts_li.setAttribute('starting',act['starting']);
@@ -170,9 +179,9 @@
             // find what's on by iterating till we find something
             for (var act of stageLists[stage]) {
                 //console.log('nowish', act, nowish, (new Date(nowish)).toUTCString(), (new Date(act['starting'])).toUTCString())
-                console.log('noiwsh', getNow(), nowish_video, 'starting', act['starting'], act['ending'], act['start_dt'].toUTCString())
+                console.log('noiwsh', getNow(), nowish, 'starting', act['starting'], act['ending'], act['start_dt'].toUTCString())
                 console.log(stage, act['stage'])
-                if (('v' in act) && (nowish_video >= act['starting']) && (nowish_video <= act['ending'])) {
+                if (('v' in act) && (nowish >= act['starting']) && (nowish <= act['ending'])) {
                     console.log('HURRAH', act['starting'])
                     vid = act['v'];
                     if ('t' in act) ts = act['t'];
@@ -187,7 +196,7 @@
 
             if (vid != '') {
                 // calculate offset
-                var time_delta = Math.round((nowish_video - starting) / 1000);
+                var time_delta = Math.round((nowish_schedule - starting) / 1000);
                 var start = time_delta + ts;
                 console.log(vid, time_delta, ts)
                 //<iframe width="560" height="315" src="https://www.youtube.com/embed/rZwv_3mcgQk?start=634" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -219,7 +228,7 @@
                 cln.setAttribute('class', 'mamaregular');
                 // strike out events that have passed
                 for (li of cln.getElementsByTagName("li")) {
-                    if (nowish > parseInt(li.getAttribute('starting')))
+                    if (nowish_schedule > parseInt(li.getAttribute('starting')))
                         li.innerHTML = '<s style="color:red">'+li.innerHTML+'</s>';
                 }
                 div.appendChild(cln);
