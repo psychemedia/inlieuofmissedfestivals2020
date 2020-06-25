@@ -116,6 +116,9 @@
                 var asif_time = nowish.getHours().toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false }) + ':' + nowish.getMinutes().toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
                 var time_str = (asif_date + ' ' + asif_time).replace(/\s/, 'T');
                 nowish = new Date(time_str);
+                //if we're after midnight, but before 9am, it's yesterday...
+                if ((nowish.getHours()>=0) && (nowish.getHours()<9))
+                    nowish.setDate(nowish.getDate()-1); 
             }
 
             console.log('getnow', nowish, time_str)
