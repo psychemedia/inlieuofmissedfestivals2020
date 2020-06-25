@@ -118,7 +118,7 @@
                 nowish = new Date(time_str);
                 //if we're after midnight, but before 9am, it's yesterday...
                 if ((nowish.getHours()>=0) && (nowish.getHours()<9))
-                    nowish.setDate(nowish.getDate()-1); 
+                    nowish.setDate(nowish.getDate()+1); 
             }
 
             console.log('getnow', nowish, time_str)
