@@ -132,6 +132,9 @@
 
         function setVideo() {
             clearTimeout(callback_timer);
+
+
+            // When are we?
             var nowish_dt = getNow();
             var nowish = Date.parse(nowish_dt);
 
@@ -142,10 +145,16 @@
             // if I select Thursday, I want Thursday listing
             // - play today: so use now-ish
             // - display yesterday
-            var nowish_schedule_dt = getNow();
-            var nowish_schedule = Date.parse(nowish_schedule_dt);
-            if ((nowish_schedule_dt.getHours()>=0) && (nowish_schedule_dt.getHours()<9))
-                nowish_schedule_dt.setDate(nowish_schedule_dt.getDate()-1);
+            var nowish_aftermidnight_dt = getNow();
+            var nowish_aftermidnight = Date.parse(nowish_aftermidnight_dt);
+            if ((nowish_aftermidnight_dt.getHours()>=0) && (nowish_aftermidnight_dt.getHours()<9))
+                nowish_aftermidnight_dt.setDate(nowish_aftermidnight_dt.getDate()+1);
+
+            var nowish_festiday_dt = getNow();
+            var nowish_festiday = Date.parse(nowish_festiday_dt);
+            var early_hours = ((nowish_festiday_dt.getHours()>=0) && (nowish_festiday_dt.getHours()<9));
+            if (early_hours)
+            nowish_festiday_dt.setDate(nowish_festiday_dt.getDate()-1);
 
             // Video metadata
             var vid = '';
@@ -153,36 +162,60 @@
             var starting;
             var ending;
 
+            // Identify selected stage
             var stage_el = document.getElementById("stageSelect");
             //var stage = stage_el.options[stage_el.selectedIndex].value;
-
             var stage = document.querySelector('input[name="stage_buttons"]:checked').value;
+            
+            // Identify selected day
             var day = days_of_week[new Date(document.querySelector('input[name="day_buttons"]:checked').value).getDay()];
-
-            var stage_acts = [];
-
+            console.log("After_midnight", day, nowish_aftermidnight_dt, nowish_dt)
+            // Identify stage acts for selected day and stage
+            // Should we create an object for this and then generate
+            // the DOM list from it?
             var acts_ul = document.createElement('ul');
             acts_ul.id = 'stagetimeslist';
+            // Generate a list of acts for schedule
+            var scheduled = [];
             for (var act of stageLists[stage]) {
-                if ((act['start_dt'].getDay() == nowish_schedule_dt.getDay()) && (act['start_dt'].getHours() > 9)) {
+                //An act is on if the as-if day matches festival and we're after 9 or as-if schedule day and it's before 9
+
+                // For the listings, we want to have two listings:
+                // 1) "Daytime" which is after 9am till end act that starts before midnight
+                // 2) After hours, which lists acts that are on before 9am and that start after midnight
+                if (((act['start_dt'].getDay() == nowish_dt.getDay()) && (act['start_dt'].getHours() > 9)) ) {
                     var acts_li = document.createElement('li');
                     acts_li.innerHTML = act['start_dt'].getHours().toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false }) + ':' + act['start_dt'].getMinutes().toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false }) + ' - ' + act['end_dt'].getHours().toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false }) + ':' + act['end_dt'].getMinutes().toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false }) + ' ' + act['act'];
                     acts_li.setAttribute('starting',act['starting']);
                     acts_li.setAttribute('ending', act['ending']);
                     acts_ul.prepend(acts_li);
+                    scheduled.push(act);
+                } else if ((act['start_dt'].getDay() == nowish_aftermidnight_dt.getDay()) && (act['start_dt'].getHours() <= 9)) {
+                    var acts_li = document.createElement('li');
+                    acts_li.innerHTML = "LATE: " + act['start_dt'].getHours().toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false }) + ':' + act['start_dt'].getMinutes().toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false }) + ' - ' + act['end_dt'].getHours().toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false }) + ':' + act['end_dt'].getMinutes().toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false }) + ' ' + act['act'];
+                    acts_li.setAttribute('starting',act['starting']);
+                    acts_li.setAttribute('ending', act['ending']);
+                    acts_ul.prepend(acts_li);
+                    scheduled.push(act);
                 }
             }
             var parent = document.getElementById('stagelist_div');
             parent.innerHTML = '';
             parent.appendChild(acts_ul);
 
-            // find what's on by iterating till we find something
+            // Find what's on by iterating through the whole itinerary
+            // till we find something...
+            // Should we create a proper set of lookup objects from the itinerary
+            // once only when the page is loaded?
+            // Strikethroughs will still need to be calculated relative to nowish.
+
+            //Try to find acts that are currently on
             for (var act of stageLists[stage]) {
                 //console.log('nowish', act, nowish, (new Date(nowish)).toUTCString(), (new Date(act['starting'])).toUTCString())
-                console.log('noiwsh', getNow(), nowish, 'starting', act['starting'], act['ending'], act['start_dt'].toUTCString())
-                console.log(stage, act['stage'])
-                if (('v' in act) && (nowish >= act['starting']) && (nowish <= act['ending'])) {
-                    console.log('HURRAH', act['starting'])
+                //console.log('noiwsh', getNow(), nowish, 'starting', act['starting'], act['ending'], act['start_dt'].toUTCString())
+                //console.log(stage, act['stage'],act['starting'])
+                if (('v' in act) && (!(early_hours) && (nowish >= act['starting']) && (nowish <= act['ending'])) || ((early_hours) && ((nowish_aftermidnight_dt >= act['starting']) && (nowish_aftermidnight_dt <= act['ending'])))) {
+                    console.log('HURRAH', early_hours, act['starting'], act['start'], nowish_festiday_dt, nowish_dt, nowish_aftermidnight_dt )
                     vid = act['v'];
                     if ('t' in act) ts = act['t'];
                     starting = act['starting'];
@@ -196,9 +229,11 @@
 
             if (vid != '') {
                 // calculate offset
-                var time_delta = Math.round((nowish_schedule - starting) / 1000);
+                var nowstart = nowish;
+                if (early_hours) nowstart = nowish+86400000;
+                var time_delta = Math.round((nowstart - starting) / 1000);
                 var start = time_delta + ts;
-                console.log(vid, time_delta, ts)
+                console.log(vid, starting, nowish_aftermidnight, nowish, nowish_festiday, time_delta, ts)
                 //<iframe width="560" height="315" src="https://www.youtube.com/embed/rZwv_3mcgQk?start=634" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 var iframe = document.createElement('iframe');
                 iframe.setAttribute("id", "festiframe");
@@ -228,7 +263,7 @@
                 cln.setAttribute('class', 'mamaregular');
                 // strike out events that have passed
                 for (li of cln.getElementsByTagName("li")) {
-                    if (nowish_schedule > parseInt(li.getAttribute('starting')))
+                    if (nowish_aftermidnight > parseInt(li.getAttribute('starting')))
                         li.innerHTML = '<s style="color:red">'+li.innerHTML+'</s>';
                 }
                 div.appendChild(cln);
